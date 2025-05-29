@@ -8,8 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: nvidia/cuda:12.0.1-devel-ubuntu20.04
 
     steps:
       - name: Checkout code
@@ -23,7 +21,7 @@ jobs:
 
       - name: Build and tag Docker image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/hashtopolis-hashcat-vast:latest .
+          docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/hashtopolis-hashcat-vast:latest .
 
       - name: Push to Docker Hub
         run: |
