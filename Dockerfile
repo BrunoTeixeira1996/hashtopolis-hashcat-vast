@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.0.1-devel-ubuntu20.04
+FROM nvidia/cuda:12.0.1-devel-ubuntu18.04
 
 RUN apt update && apt install -y --no-install-recommends \
   zip \
@@ -14,7 +14,7 @@ CMD mkdir /root/htpclient
 
 WORKDIR /root/htpclient
 
-RUN git clone https://github.com/hashtopolis/agent-python.git && \
+RUN git clone https://github.com/BrunoTeixeira1996/agent-python.git && \
   cd agent-python && \
   ./build.sh && \
   mv hashtopolis.zip ../ && \
