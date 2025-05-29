@@ -10,13 +10,11 @@ RUN apt update && apt install -y --no-install-recommends \
   curl && \
   rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /root/htpclient
+CMD mkdir /root/htpclient
 WORKDIR /root/htpclient
 
 RUN git clone https://github.com/BrunoTeixeira1996/agent-python.git && \
   cd agent-python && \
   ./build.sh && \
   mv hashtopolis.zip ../ && \
-  cd ../ && rm -rf agent-python
-
-CMD ["bash"]
+  cd ../ && rm -R agent-python
