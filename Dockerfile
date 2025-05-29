@@ -1,6 +1,6 @@
 FROM nvidia/cuda:12.0.1-devel-ubuntu20.04
 
-RUN apt update && apt install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   zip \
   git \
   python3 \
@@ -11,6 +11,7 @@ RUN apt update && apt install -y --no-install-recommends \
   rm -rf /var/lib/apt/lists/*
 
 CMD mkdir /root/htpclient
+
 WORKDIR /root/htpclient
 
 RUN git clone https://github.com/BrunoTeixeira1996/agent-python.git && \
@@ -18,3 +19,5 @@ RUN git clone https://github.com/BrunoTeixeira1996/agent-python.git && \
   ./build.sh && \
   mv hashtopolis.zip ../ && \
   cd ../ && rm -R agent-python
+
+CMD ["bash"]
