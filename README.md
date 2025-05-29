@@ -66,3 +66,29 @@ For additional parameters like -w4 (workload) and -O (optimized kernels), You ca
 [![Demo](https://img.youtube.com/vi/A1QrUVy7UZ0/0.jpg)](https://www.youtube.com/watch?v=A1QrUVy7UZ0 "Demo")
 
 Enjoy!
+
+
+# Test
+
+To test localy rename the `Dockerfile_test` to `Dockerfile` and run the following
+
+```
+$ docker build --no-cache -t brunoteixeira1996/hashtopolis-hashcat-vast:latest .
+$ docker run --rm -it brunoteixeira1996/hashtopolis-hashcat-vast:latest \
+  bash -c "cd /root/htpclient && python3 hashtopolis.zip --url https://REDACTED/api/server.php --voucher REDACTED --http-headers 'CF-Access-Client-Id: REDACTED, CF-Access-Client-Secret: REDACTED'"
+```
+
+After this you should have the following log
+```
+Starting client 's3-python-0.7.3.779'...
+Successfully registered!
+Collecting agent data...
+Login successful!
+Hashtopolis Server version: 0.14.4 (commit cd9f5b6)
+Client is up-to-date!
+
+No task available!
+```
+
+
+If you want to use vast.ai then you should use the `Dockerfile` that works for that
